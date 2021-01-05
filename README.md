@@ -7,7 +7,7 @@ Anbox, short for "Android Box" is an android emulator that runs on Linux. When c
 
 ## Installing
 
-Even if you are not familiar with the Linux terminal you can do this though it does help to know a bit about Linux. If you're unsure, ask your student if they 
+Even if you are not familiar with the Linux terminal you can do this though it does help to know a bit about Linux. If you're unsure, ask your student if they want to follow these instructions and learn how to use the terminal. One of our students has become a Linux wizard, and would rather type commands than click the mouse!
 
 Run the following commands in the terminal (Control-T will open a new terminal). If prompted for your password on any of the `sudo` commands, enter your Linux user password to continue.
 
