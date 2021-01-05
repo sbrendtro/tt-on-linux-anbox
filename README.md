@@ -7,7 +7,9 @@ Anbox, short for "Android Box" is an android emulator that runs on Linux. When c
 
 ## Installing
 
-Even if you are not familiar with the Linux terminal you can do this though it does help to know a bit about Linux. Run the following commands in the terminal (Control-T will open a new terminal). If prompted for your password on any of the `sudo` commands, enter your Linux user password to continue.
+Even if you are not familiar with the Linux terminal you can do this though it does help to know a bit about Linux. If you're unsure, ask your student if they 
+
+Run the following commands in the terminal (Control-T will open a new terminal). If prompted for your password on any of the `sudo` commands, enter your Linux user password to continue.
 
 First, if you are running Ubuntu 18 or Mint 18, you will need to first install a module package. __If you are running Ubuntu 19 or higher, or Mint 19 or higher, you can skip this step, as these versions come with the modules pre-installed.__
 
@@ -25,6 +27,9 @@ sudo apt-get install -y curl lzip squashfs-tools wget unzip tar
 # Activate the required modules
 sudo modprobe ashmem_linux
 sudo modprobe binder_linux
+
+# Enable the modules to loaded on restart
+echo "ashmem_linux\nbinder_linux" | sudo tee /etc/modules-load.d/anbox.conf
 
 # Install anbox using the Snap installer
 snap install --devmode --beta anbox
