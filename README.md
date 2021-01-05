@@ -19,6 +19,9 @@ sudo apt install anbox-modules-dkms
 
 The rest of the commands below should get Anbox installed and running:
 ```
+# Install some required utilities
+sudo apt-get install -y curl lzip squashfs-tools wget unzip tar
+
 # Activate the required modules
 sudo modprobe ashmem_linux
 sudo modprobe binder_linux
@@ -30,7 +33,7 @@ snap install --devmode --beta anbox
 wget https://raw.githubusercontent.com/geeks-r-us/anbox-playstore-installer/master/install-playstore.sh
 chmod 755 install-playstore.sh
 
-# Run the Google Play Store install
+# Run the Google Play Store install (takes several minutes)
 ./install-playstore.sh
 
 ```
