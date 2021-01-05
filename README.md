@@ -28,7 +28,7 @@ sudo apt-get install -y curl lzip squashfs-tools wget unzip tar
 sudo modprobe ashmem_linux
 sudo modprobe binder_linux
 
-# Enable the modules to loaded on restart
+# Enable the modules to load on restart
 echo "ashmem_linux\nbinder_linux" | sudo tee /etc/modules-load.d/anbox.conf
 
 # Install anbox using the Snap installer
