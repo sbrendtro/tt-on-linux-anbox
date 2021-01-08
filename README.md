@@ -9,15 +9,37 @@ Anbox, short for "Android Box" is an android emulator that runs on Linux. When c
 
 Even if you are not familiar with the Linux terminal you can do this though it does help to know a bit about Linux. If you're unsure, ask your student if they want to follow these instructions and learn how to use the terminal. One of our students has become a Linux wizard, and would rather type commands than click the mouse!
 
-Run the following commands in the terminal (Control-T will open a new terminal). If prompted for your password on any of the `sudo` commands, enter your Linux user password to continue.
+Run the following commands in the terminal (Control-Alt-T will open a new terminal). If prompted for your password on any of the `sudo` commands, enter your Linux user password to continue.
 
-First, if you are running Ubuntu 18 or Mint 18, you will need to first install a module package. __If you are running Ubuntu 19 or higher, or Mint 19 or higher, you can skip this step, as these versions come with the modules pre-installed.__
-
+## Prerequisites
+Some versions of Ubuntu and Mint come with the required Anbox modules already installed. If the either of the following commands results in an error, you must to complete this **Prerequisites** section. Otherwise, continue with the **General Installation** section.
 
 ```
-# Skip the following line if you are running Ubuntu/Mint 19 or higher
+sudo modprobe ashmem_linux
+sudo modprobe binder_linux
+```
+
+### Ubuntu Linux
+Ubuntu 19 and higher should come with the modules pre-installed. If you are running an older version, or the above commands worked, you can skip this section.
+
+```
+# Skip the following line if you already have the modules installed
 sudo apt install anbox-modules-dkms
 ```
+
+### Mint Linux
+It seems that the newest version of Mint still may not ship with the Anbox modules installed. If the above `modprobe` commands ran without error, you may skip this section. We don't have Mint, so we can't directly test this out. Please open an issue if the following is incorrect and we will update the guide accordingly.
+
+```
+sudo add-apt-repository ppa:morphis/anbox-support
+sudo apt update
+sudo apt install linux-headers-generic anbox-modules-dkms
+
+sudo modprobe ashmem_linux
+sudo modprobe binder_linux
+```
+
+### General Install
 
 The rest of the commands below should get Anbox installed and running:
 ```
@@ -29,7 +51,8 @@ sudo modprobe ashmem_linux
 sudo modprobe binder_linux
 
 # Enable the modules to load on restart
-echo "ashmem_linux\nbinder_linux" | sudo tee /etc/modules-load.d/anbox.conf
+echo "ashmem_linux" | sudo tee -a /etc/modules-load.d/anbox.conf
+echo "binder_linux" | sudo tee -a /etc/modules-load.d/anbox.conf
 
 # Install anbox using the Snap installer
 snap install --devmode --beta anbox
@@ -42,7 +65,6 @@ chmod 755 install-playstore.sh
 ./install-playstore.sh
 
 ```
-
 
 ### Sign in and install the TT App
 * Look in your start menu and look for Anbox, and run it.
